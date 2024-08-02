@@ -27,18 +27,16 @@ public class Taller1 {
      y la convierta a metros/seg y a metros/hora. Retorne un string del tipo: ### m/s - ### m/h. Si hay error, 
      devuelva el string "Error en la conversion"
     */
-    public static String Convertir_km_seg(int velocidad_km_seg) {
+     public static String Convertir_km_seg(int velocidad_km_seg) {
         try {
             final int METROS_POR_KM = 1000;
             final int SEGUNDOS_POR_HORA = 3600;
-
-            int metros_por_segundo = velocidad_km_seg * METROS_POR_KM;
-            int metros_por_hora = metros_por_segundo * SEGUNDOS_POR_HORA;
-            return (metros_por_segundo + "m/s -" + metros_por_hora + "m/h");
+    
+            float metros_por_segundo = velocidad_km_seg * METROS_POR_KM;
+            float metros_por_hora = metros_por_segundo * SEGUNDOS_POR_HORA;
+            return (metros_por_segundo + " m/s - " + metros_por_hora + " m/h ");
             
-        }
-        
-        catch (Exception e) {
+        } catch (Exception e) {
             return ("Error en la conversión");
         }
     }
@@ -46,7 +44,7 @@ public class Taller1 {
     /*3. Diseñe un algoritmo e implemente la función Convertir_cm_lt que: reciba una cantidad double expresada en 
     cc (centímetros cúbicos) y devuelva un float con su equivalente en litros. Si hay algún error, retorne 0.
     */
-    public static float Convertir_cm_lt(double cantidad_cc){
+public static float Convertir_cm_lt(double cantidad_cc){
         try {
             final float cc_x_lt = 1000;
             float cantidad_final = (float)cantidad_cc / cc_x_lt;
@@ -79,7 +77,7 @@ public class Taller1 {
    centígrados y la devuelve en grados Fahrenheit (averiguar la fórmula) F = 32 + ( 9 * C / 5). Si hay algún error, 
    retorne 0.
    */
-    public static double Convertir_cent_far(double temperatura_grados_C){
+public static double Convertir_cent_far(double temperatura_grados_C){
     try {
         double grados_f = 0;
         final byte treinta_dos = 32;
@@ -89,6 +87,7 @@ public class Taller1 {
         grados_f = treinta_dos + (nueve * temperatura_grados_C / cinco);
         return grados_f;
     } 
+
     catch (Exception e) {
         return 0;
     }
@@ -98,37 +97,38 @@ public class Taller1 {
    el número de minutos y número segundos como enteros bytes, positivos y devuelva todo en segundos en un entero. 
    Si hay algún error, devuelva -1.
    */
-    public static int Calcular_segs(byte nro_dias, byte nro_horas, byte nro_mins, byte nro_segs){
+   public static int Calcular_segs(short nro_dias, short nro_horas, short nro_mins, short nro_segs) {
     try {
-        int total_segs = 0;
         final int segs_x_dia = 86400;
-        final short segs_x_hora = 3600;
-        final byte segs_x_min = 60;
+        final int segs_x_hora = 3600;
+        final int segs_x_min = 60;
 
         int segundos_x_dia_total = nro_dias * segs_x_dia;
         int segundos_x_hora_total = nro_horas * segs_x_hora;
         int segundos_x_min_total = nro_mins * segs_x_min;
-        total_segs = segundos_x_dia_total + segundos_x_hora_total + segundos_x_min_total;
-        return total_segs;  
-    } 
-    catch (Exception e) {
+
+        int total_segs = segundos_x_dia_total + segundos_x_hora_total + segundos_x_min_total + nro_segs;
+        return total_segs;
+
+    } catch (Exception e) {
         return -1;
     }
-   }
+}
+
     
    /*7.	Un usuario tiene un sistema de báscula para pesar camiones. Diseñe un algoritmo e implemente la función 
    Calcular_peso_carga que reciba un float con el peso total del camión cargado en toneladas y otro float con 
    lo que pesa el camión vacío en toneladas, y devuelva el peso neto de la carga en kilos y toneladas 
    en un string del tipo: "### kilos - ### toneladas". 
    Si hay algún error, devuelva en un string "Error en la función Calcular_peso_carga"*/
-    public static String Calcular_peso_carga(float peso_camion_cargado, float peso_camion_vacio) {
+     public static String Calcular_peso_carga(float peso_camion_cargado, float peso_camion_vacio) {
     try {
         float peso_neto_carga = peso_camion_cargado - peso_camion_vacio;
-        float kg_por_TON = 1000;
+        float kg_por_TON = 1000f;
         float peso_neto_kg = peso_neto_carga * kg_por_TON;
         float peso_neto_TON = peso_neto_carga;
 
-        String mensaje_final = String.format("%.0f kilos - %.3f toneladas", peso_neto_kg, peso_neto_TON);
+        String mensaje_final = (peso_neto_kg + " kilos - " + peso_neto_TON + " toneladas");
         return mensaje_final;
     } catch (Exception e) {
         return ("Error en la función Calcular_peso_carga");
@@ -140,7 +140,7 @@ public class Taller1 {
    otro dato short que es la velocidad  promedio que alcanzará también el vehículo en kilómetros/hora.  
    Si hay algún error, devuelva -1.
    */
-    public static float Calcular_horasxviaje(String destino, short distancia_kms, short v_promedio){
+   public static float Calcular_horasxviaje(String destino, short distancia_kms, short v_promedio){
     try {
         float horas_viaje = 0;
         horas_viaje = distancia_kms / v_promedio;
@@ -161,7 +161,7 @@ public class Taller1 {
    de combustible que debe ser cargado en el avión.
    
    Si hay algún error, devuelva -1.*/
-    public static float Calcular_combustible(int ruta1, int ruta2, int ruta3, int ruta4) {
+   public static float Calcular_combustible(int ruta1, int ruta2, int ruta3, int ruta4) {
     try {
         final float km_por_combustible_crucero = 60.8f;
         final float combustible_velocidad_crucero_TON = 0.2f;
@@ -169,7 +169,6 @@ public class Taller1 {
         final float combustible_aterrizaje_TON = 0.4f;
         
         int total_km = ruta1 + ruta2 + ruta3 + ruta4;
-        
         float combustible_crucero = (total_km / km_por_combustible_crucero) * combustible_velocidad_crucero_TON;
         float total_combustible = combustible_crucero + (combustible_despegue_TON + combustible_aterrizaje_TON) * 4;
         
@@ -187,10 +186,10 @@ public class Taller1 {
    
    Si hay algún error, devuelva 0.
    */
-    public static double Calcular_peso_luna(byte peso_kilos){
+     public static double Calcular_peso_luna(byte peso_kilos){
     try {
-        final double gravedad_tierra = 9.81;
-        final double FACTOR_LUNA = 0.165;
+        final float gravedad_tierra = 9.81f;
+        final float FACTOR_LUNA = 0.165f;
         double peso_tierra_new = peso_kilos * gravedad_tierra;
         double peso_luna_new = peso_tierra_new * FACTOR_LUNA;
         return peso_luna_new;
